@@ -8,32 +8,53 @@
 */
 
 // реалізація класу Wizard
-class Wizard implements ICharacter, ISpellCaster {
-  constructor(public name: string, public level: number) {
-    if (this.level < 1) {
-      throw new Error('Level too low');
-    }
-  }
+// class Wizard implements ICharacter, ISpellCaster {
+//   constructor(public name: string, public level: number) {
+//     if (this.level < 1) {
+//       throw new Error('Level too low');
+//     }
+//   }
 
-  introduce(phrase: string): void {
-    console.log(phrase + ', ' + this.name);
-  }
+//   introduce(phrase: string): void {
+//     console.log(phrase + ', ' + this.name);
+//   }
 
-  castSpell(): void {
-    console.log('Casting a spell, behold my power!');
-  }
+//   castSpell(): void {
+//     console.log('Casting a spell, behold my power!');
+//   }
 
-  levelUp(): void {
-    this.level++;
-    console.log(`Level up! New level is ${this.level}`);
+//   levelUp(): void {
+//     this.level++;
+//     console.log(`Level up! New level is ${this.level}`);
+//   }
+// }
+
+// // тестування класу
+// const wizard = new Wizard('Merlin', 15);
+
+// wizard.introduce('I am the mighty wizard');
+// wizard.castSpell();
+// wizard.levelUp();  // Level up! New level is 16
+
+// export {};
+
+class Employee {
+  constructor(
+    public name: string,
+    private department: string,
+    protected salary: number
+  ) {}
+
+  getEmployeeDetails() {
+    return `Name: ${this.name}, Department: ${this.department}, Salary: ${this.salary}`;
   }
 }
 
-// тестування класу
-const wizard = new Wizard('Merlin', 15);
-
-wizard.introduce('I am the mighty wizard');
-wizard.castSpell();
-wizard.levelUp();  // Level up! New level is 16
+class Manager extends Employee {
+  constructor(name: string, department: string, salary: number) {
+    super(name, department, salary + 10000);
+  }
+}
 
 export {};
+
